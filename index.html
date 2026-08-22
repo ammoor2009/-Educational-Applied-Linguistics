@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة التطبيقات اللغوية والتعليمية</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            max-width: 480px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #1e293b;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+
+        p.subtitle {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 28px;
+        }
+
+        .links-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .app-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #0f172a;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .app-card:hover {
+            background-color: #ff4b4b;
+            color: #ffffff;
+            border-color: #ff4b4b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 75, 75, 0.25);
+        }
+
+        .icon {
+            font-size: 1.3rem;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>منصة التطبيقات الذكية</h1>
+        <p class="subtitle">اختر التطبيق المطلوب للانتقال إليه مباشرة</p>
+
+        <div class="links-grid">
+            <a href="https://sard-app.streamlit.app/" target="_blank" class="app-card">
+                <span>تطبيق سَرْد</span>
+                <span class="icon">📖</span>
+            </a>
+
+            <a href="https://smartpunctuate-kuv8bccljzjvs6bzs8quhx.streamlit.app/" target="_blank" class="app-card">
+                <span>تطبيق الترقيم الذكي</span>
+                <span class="icon">✍️</span>
+            </a>
+
+            <a href="https://smartexams-4r8w9l6mtmduykygvwpbwy.streamlit.app/" target="_blank" class="app-card">
+                <span>تطبيق الاختبارات الذكية</span>
+                <span class="icon">📝</span>
+            </a>
+
+            <a href="https://tashkeel-mqe2h5gs9rh4jsjq8dnq4z.streamlit.app/" target="_blank" class="app-card">
+                <span>تطبيق التشكيل اللغوي</span>
+                <span class="icon">🔍</span>
+            </a>
+        </div>
+
+        <footer>
+            جميع الحقوق محفوظة &copy; 2026
+        </footer>
+    </div>
+
+</body>
+</html>
