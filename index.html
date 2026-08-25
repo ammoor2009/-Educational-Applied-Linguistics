@@ -109,7 +109,6 @@
             user-select: none;
         }
 
-        /* التنسيق عند التمرير على البطاقة */
         .app-card:hover .info-btn {
             background-color: #ffffff;
             color: #ff4b4b;
@@ -142,7 +141,6 @@
             z-index: 20;
         }
 
-        /* سهم الإشارة أسر للزر المدمج على اليمين */
         .info-box::before {
             content: '';
             position: absolute;
@@ -160,29 +158,87 @@
             animation: fadeIn 0.2s ease-in-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* قسم الملاحظات والتواصل */
-        .feedback-card {
+        /* زر الملاحظات الرئيسي */
+        .feedback-trigger-btn {
             margin-top: 24px;
-            padding: 20px 18px;
-            background-color: #f8fafc;
-            border: 1px solid #e2e8f0;
+            width: 100%;
+            padding: 12px 18px;
+            background-color: #f1f5f9;
+            color: #334155;
+            border: 1px dashed #cbd5e1;
             border-radius: 12px;
-            text-align: right;
-        }
-
-        .feedback-title {
-            color: #1e293b;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            margin-bottom: 12px;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .feedback-trigger-btn:hover {
+            background-color: #e2e8f0;
+            color: #0f172a;
+            border-color: #94a3b8;
+        }
+
+        /* النافذة المنبثقة (Modal Backdrop) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.2s ease-in-out;
+        }
+
+        /* محتوى النافذة المنبثقة */
+        .modal-content {
+            background-color: #ffffff;
+            padding: 24px;
+            border-radius: 16px;
+            max-width: 400px;
+            width: 100%;
+            text-align: right;
+            position: relative;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 14px;
+            left: 16px;
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: #94a3b8;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close-modal-btn:hover {
+            color: #0f172a;
+        }
+
+        .modal-title {
+            color: #1e293b;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
             gap: 8px;
         }
 
@@ -190,7 +246,7 @@
         .feedback-form textarea {
             width: 100%;
             padding: 10px 12px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             border: 1px solid #cbd5e1;
             border-radius: 8px;
             font-family: inherit;
@@ -206,7 +262,7 @@
 
         .feedback-form textarea {
             resize: vertical;
-            min-height: 80px;
+            min-height: 90px;
         }
 
         .feedback-btn {
@@ -219,11 +275,16 @@
             font-weight: 600;
             font-size: 0.95rem;
             cursor: pointer;
-            transition: background-color 0.2s ease, transform 0.1s ease;
+            transition: all 0.2s ease;
         }
 
         .feedback-btn:hover {
             background-color: #ff4b4b;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         footer {
@@ -340,27 +401,36 @@
             </div>
         </div>
 
-        <!-- قسم إرسال الملاحظات والآراء -->
-        <div class="feedback-card">
-            <div class="feedback-title">
-                <span>💬</span>
-                <span>إرسال ملاحظات أو استفسار</span>
-            </div>
-            <form action="https://formspree.io/f/meajyqyj" method="POST" class="feedback-form">
-                <input type="text" name="name" placeholder="الاسم (اختياري)">
-                <textarea name="message" required placeholder="اكتب ملاحظتك أو اقتراحك هنا..."></textarea>
-                <button type="submit" class="feedback-btn">إرسال الملاحظة</button>
-            </form>
-        </div>
+        <!-- زر فتح نافذة الملاحظات -->
+        <button class="feedback-trigger-btn" onclick="openFeedbackModal()">
+            <span>💬</span>
+            <span>إرسال ملاحظات أو استفسار</span>
+        </button>
 
         <footer>
             جميع الحقوق محفوظة د.عمر الرواجفة&copy; 2026
         </footer>
     </div>
 
+    <!-- النافذة المنبثقة لإرسال الملاحظات -->
+    <div class="modal-overlay" id="feedbackModal" onclick="closeModalOnOverlay(event)">
+        <div class="modal-content">
+            <button class="close-modal-btn" onclick="closeFeedbackModal()">&times;</button>
+            <div class="modal-title">
+                <span>💬</span>
+                <span>إرسال ملاحظات أو استفسار</span>
+            </div>
+            <form action="https://formspree.io/f/meajyqyj" method="POST" class="feedback-form" id="feedbackForm" onsubmit="submitFeedback(event)">
+                <input type="text" name="name" placeholder="الاسم (اختياري)">
+                <textarea name="message" required placeholder="اكتب ملاحظتك أو اقتراحك هنا..."></textarea>
+                <button type="submit" class="feedback-btn" id="submitBtn">إرسال الملاحظة</button>
+            </form>
+        </div>
+    </div>
+
     <script>
+        // إظهار وإخفاء مربعات معلومات التطبيقات
         function toggleInfo(event, button) {
-            // منع الانتقال للرابط عند الضغط على أيقونة التعريف
             event.preventDefault();
             event.stopPropagation();
 
@@ -382,6 +452,57 @@
                 box.classList.remove('show');
             });
         });
+
+        // وظائف النافذة المنبثقة للملاحظات
+        function openFeedbackModal() {
+            document.getElementById('feedbackModal').classList.add('active');
+        }
+
+        function closeFeedbackModal() {
+            document.getElementById('feedbackModal').classList.remove('active');
+        }
+
+        function closeModalOnOverlay(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                closeFeedbackModal();
+            }
+        }
+
+        // إرسال الملاحظة دون إعادة تحميل الصفحة وإغلاق النافذة آلياً
+        function submitFeedback(event) {
+            event.preventDefault();
+            const form = event.target;
+            const submitBtn = document.getElementById('submitBtn');
+
+            submitBtn.innerText = 'جاري الإرسال...';
+            submitBtn.disabled = true;
+
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    submitBtn.innerText = 'تم الإرسال بنجاح! ✓';
+                    submitBtn.style.backgroundColor = '#10b981';
+                    setTimeout(() => {
+                        closeFeedbackModal();
+                        form.reset();
+                        submitBtn.innerText = 'إرسال الملاحظة';
+                        submitBtn.style.backgroundColor = '#1e293b';
+                        submitBtn.disabled = false;
+                    }, 1200);
+                } else {
+                    alert('حدث خطأ أثناء الإرسال، يرجى المحاولة لاحقاً.');
+                    submitBtn.innerText = 'إرسال الملاحظة';
+                    submitBtn.disabled = false;
+                }
+            }).catch(() => {
+                alert('حدث خطأ أثناء الإرسال، يرجى المحاولة لاحقاً.');
+                submitBtn.innerText = 'إرسال الملاحظة';
+                submitBtn.disabled = false;
+            });
+        }
     </script>
 
 </body>
