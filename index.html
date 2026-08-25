@@ -57,7 +57,7 @@
         .app-item {
             position: relative;
             width: 100%;
-            z-index: 1; /* مستوى طبقة افتراضي */
+            z-index: 1;
         }
 
         /* البطاقة المدمجة بالكامل */
@@ -76,12 +76,14 @@
             transition: all 0.2s ease-in-out;
         }
 
-        .app-card:hover {
-            background-color: #ff4b4b;
+        /* التحويم والضغط على أزرار التطبيقات باللون الأخضر */
+        .app-card:hover,
+        .app-card:active {
+            background-color: #10b981;
             color: #ffffff;
-            border-color: #ff4b4b;
+            border-color: #10b981;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 75, 75, 0.25);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
         }
 
         .card-content {
@@ -90,7 +92,7 @@
             gap: 12px;
         }
 
-        /* زر التعريف المدمج داخل البطاقة */
+        /* زر التعريف المدمج داخل البطاقة (الألوان الافتراضية كما هي) */
         .info-btn {
             width: 28px;
             height: 28px;
@@ -110,9 +112,10 @@
             user-select: none;
         }
 
+        /* عند التحويم على البطاقة يتغير لون النص داخل دائرة انفو للأخضر ليناسب الخلفية */
         .app-card:hover .info-btn {
             background-color: #ffffff;
-            color: #ff4b4b;
+            color: #10b981;
             border-color: #ffffff;
         }
 
@@ -124,7 +127,7 @@
             font-size: 1.3rem;
         }
 
-        /* مربع الوصف النصي - يطفو فوق العناصر دون إزاحة */
+        /* مربع الوصف النصي */
         .info-box {
             display: none;
             position: absolute;
@@ -183,7 +186,7 @@
             border-color: #94a3b8;
         }
 
-        /* النافذة المنبثقة (Modal Backdrop) */
+        /* النافذة المنبثقة */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -204,7 +207,6 @@
             animation: fadeIn 0.2s ease-in-out;
         }
 
-        /* محتوى النافذة المنبثقة */
         .modal-content {
             background-color: #ffffff;
             padding: 24px;
@@ -279,7 +281,7 @@
         }
 
         .feedback-btn:hover {
-            background-color: #ff4b4b;
+            background-color: #10b981;
         }
 
         @keyframes fadeIn {
@@ -424,7 +426,7 @@
             </div>
         </div>
 
-        <!-- زر إرسال الملاحظات المصغر والأنيق -->
+        <!-- زر إرسال الملاحظات -->
         <div>
             <button class="feedback-trigger-btn" onclick="openFeedbackModal()">
                 <span>💬</span>
@@ -463,7 +465,6 @@
             const infoBox = parentItem.querySelector('.info-box');
             const isCurrentlyShown = infoBox.classList.contains('show');
 
-            // إخفاء جميع المربعات وإعادة ضبط مستوى الطبقات (z-index)
             document.querySelectorAll('.info-box').forEach(box => {
                 box.classList.remove('show');
             });
@@ -471,7 +472,6 @@
                 item.style.zIndex = '1';
             });
 
-            // إظهار المربع الحالي ورفع الطبقة الخاصة بالبطاقة لتطفو فوق البطاقات السفلى
             if (!isCurrentlyShown) {
                 infoBox.classList.add('show');
                 parentItem.style.zIndex = '100';
