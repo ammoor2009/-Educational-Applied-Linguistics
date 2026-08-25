@@ -123,34 +123,18 @@
             font-size: 1.3rem;
         }
 
-        /* مربع الوصف النصي */
+        /* مربع الوصف النصي الانسيابي */
         .info-box {
             display: none;
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            left: 0;
+            margin-top: 8px;
             background-color: #1e293b;
             color: #f8fafc;
-            padding: 14px 16px;
+            padding: 12px 16px;
             border-radius: 10px;
             font-size: 0.88rem;
             line-height: 1.5;
             text-align: right;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-            z-index: 20;
-        }
-
-        .info-box::before {
-            content: '';
-            position: absolute;
-            top: -6px;
-            right: 22px;
-            width: 0;
-            height: 0;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-bottom: 6px solid #1e293b;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
         }
 
         .info-box.show {
@@ -302,7 +286,8 @@
                 منصة التطبيقات الذكية
                 <span class="info-btn" style="vertical-align: middle; width: 24px; height: 24px; font-size: 0.85rem; display: inline-flex;" role="button" onclick="toggleInfo(event, this)">i</span>
             </h1>
-            <div class="info-box" style="text-align: center;">مختبر لغوي وأكاديمي يدمج بين التطبيق التفاعلي لعلوم العربية المتقدمة وبين أدوات التوثيق والتنسيق البحثي، لتوفير تجربة تعليمية ذكية وشاملة تخدم الطالب والباحث والمهتم بالتراث اللغوي. إعداد وتطوير د. عمر الرواجفة
+            <div class="info-box" style="text-align: center;">
+                مختبر لغوي وأكاديمي يدمج بين التطبيق التفاعلي لعلوم العربية المتقدمة وبين أدوات التوثيق والتنسيق البحثي، لتوفير تجربة تعليمية ذكية وشاملة تخدم الطالب والباحث والمهتم بالتراث اللغوي. إعداد وتطوير د. عمر الرواجفة
             </div>
         </div>
 
