@@ -56,45 +56,15 @@
 
         .app-item {
             position: relative;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            width: 100%;
         }
 
-        /* زر التعريف التفاعلي (موجود على اليمين بلون أزرق مريح) */
-        .info-btn {
-            width: 38px;
-            height: 38px;
-            flex-shrink: 0;
-            border-radius: 50%;
-            background-color: #e0f2fe;
-            color: #0369a1;
-            border: 1px solid #bae6fd;
-            font-weight: bold;
-            font-size: 1.05rem;
-            font-family: Georgia, serif;
-            font-style: italic;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease-in-out;
-            order: -1; /* يضمن نقل الأيقونة لأقصى اليمين */
-        }
-
-        .info-btn:hover {
-            background-color: #0284c7;
-            color: #ffffff;
-            border-color: #0284c7;
-            transform: scale(1.05);
-        }
-
+        /* البطاقة المدمجة بالكامل */
         .app-card {
-            flex: 1;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 20px;
+            padding: 14px 18px;
             background-color: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
@@ -111,6 +81,43 @@
             border-color: #ff4b4b;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(255, 75, 75, 0.25);
+        }
+
+        .card-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* زر التعريف المدمج داخل البطاقة */
+        .info-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: #e0f2fe;
+            color: #0369a1;
+            border: 1px solid #bae6fd;
+            font-weight: bold;
+            font-size: 0.95rem;
+            font-family: Georgia, serif;
+            font-style: italic;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            user-select: none;
+        }
+
+        /* التنسيق عند التمرير على البطاقة */
+        .app-card:hover .info-btn {
+            background-color: #ffffff;
+            color: #ff4b4b;
+            border-color: #ffffff;
+        }
+
+        .info-btn:hover {
+            transform: scale(1.15);
         }
 
         .icon {
@@ -135,12 +142,12 @@
             z-index: 20;
         }
 
-        /* سهم الإشارة أسر للزر على اليمين */
+        /* سهم الإشارة أسر للزر المدمج على اليمين */
         .info-box::before {
             content: '';
             position: absolute;
             top: -6px;
-            right: 14px;
+            right: 22px;
             width: 0;
             height: 0;
             border-left: 6px solid transparent;
@@ -176,10 +183,12 @@
             <!-- تطبيق سَرْد -->
             <div class="app-item">
                 <a href="https://sard-app.streamlit.app/" target="_blank" class="app-card">
-                    <span>تطبيق سَرْد</span>
+                    <div class="card-content">
+                        <span class="info-btn" role="button" title="تعريف بالتطبيق" onclick="toggleInfo(event, this)">i</span>
+                        <span>تطبيق سَرْد</span>
+                    </div>
                     <span class="icon">📖</span>
                 </a>
-                <button type="button" class="info-btn" onclick="toggleInfo(event, this)">i</button>
                 <div class="info-box">
                     تطبيق مخصص لتحليل النصوص السردية والأدبية، يستخرج عناصر السرد مثل الزمن، المكان، والشخصيات بشكل تطبيقي.
                 </div>
@@ -188,10 +197,12 @@
             <!-- تطبيق الترقيم الذكي -->
             <div class="app-item">
                 <a href="https://smartpunctuate-kuv8bccljzjvs6bzs8quhx.streamlit.app/" target="_blank" class="app-card">
-                    <span>تطبيق الترقيم الذكي</span>
+                    <div class="card-content">
+                        <span class="info-btn" role="button" title="تعريف بالتطبيق" onclick="toggleInfo(event, this)">i</span>
+                        <span>تطبيق الترقيم الذكي</span>
+                    </div>
                     <span class="icon">✍️</span>
                 </a>
-                <button type="button" class="info-btn" onclick="toggleInfo(event, this)">i</button>
                 <div class="info-box">
                     أداة تساعد الطالب على ضبط استخدام علامات الترقيم في الكتابة العربية وتطبيق القواعد الصحيحة تلقائيًا.
                 </div>
@@ -200,10 +211,12 @@
             <!-- تطبيق المُدرب اللغوي -->
             <div class="app-item">
                 <a href="https://arabic-grammar-tutor-4bxvwu4erwlg2zrygfo3c2.streamlit.app/" target="_blank" class="app-card">
-                    <span>تطبيق المُدرب اللغوي</span>
+                    <div class="card-content">
+                        <span class="info-btn" role="button" title="تعريف بالتطبيق" onclick="toggleInfo(event, this)">i</span>
+                        <span>تطبيق المُدرب اللغوي</span>
+                    </div>
                     <span class="icon">💪</span>
                 </a>
-                <button type="button" class="info-btn" onclick="toggleInfo(event, this)">i</button>
                 <div class="info-box">
                     منصة تفاعلية لتدريب الطلاب على المهارات النحوية واللغوية عبر تمارين وتطبيقات عمليّة متدرّجة.
                 </div>
@@ -212,10 +225,12 @@
             <!-- تطبيق الاختبارات الذكية -->
             <div class="app-item">
                 <a href="https://smartexams-4r8w9l6mtmduykygvwpbwy.streamlit.app/" target="_blank" class="app-card">
-                    <span>تطبيق الاختبارات الذكية</span>
+                    <div class="card-content">
+                        <span class="info-btn" role="button" title="تعريف بالتطبيق" onclick="toggleInfo(event, this)">i</span>
+                        <span>تطبيق الاختبارات الذكية</span>
+                    </div>
                     <span class="icon">📝</span>
                 </a>
-                <button type="button" class="info-btn" onclick="toggleInfo(event, this)">i</button>
                 <div class="info-box">
                     تطبيق لتوليد وتقديم الاختبارات والتقييمات اللغوية الذكية لقياس مستوى الاستيعاب فورياً.
                 </div>
@@ -224,10 +239,12 @@
             <!-- تطبيق التشكيل اللغوي -->
             <div class="app-item">
                 <a href="https://tashkeel-mqe2h5gs9rh4jsjq8dnq4z.streamlit.app/" target="_blank" class="app-card">
-                    <span>تطبيق التشكيل اللغوي</span>
+                    <div class="card-content">
+                        <span class="info-btn" role="button" title="تعريف بالتطبيق" onclick="toggleInfo(event, this)">i</span>
+                        <span>تطبيق التشكيل اللغوي</span>
+                    </div>
                     <span class="icon">🔍</span>
                 </a>
-                <button type="button" class="info-btn" onclick="toggleInfo(event, this)">i</button>
                 <div class="info-box">
                     أداة لضبط وتشكيل أواخر الكلمات والنصوص العربية بدقة لمساعدة الطلاب على القراءة السليمة.
                 </div>
@@ -236,10 +253,12 @@
             <!-- منظم المصادر والمراجع -->
             <div class="app-item">
                 <a href="https://mfjhmfj8ejuunufqnj6wew.streamlit.app/" target="_blank" class="app-card">
-                    <span>منظم المصادر والمراجع (للباحثين)</span>
+                    <div class="card-content">
+                        <span class="info-btn" role="button" title="تعريف بالتطبيق" onclick="toggleInfo(event, this)">i</span>
+                        <span>منظم المصادر والمراجع (للباحثين)</span>
+                    </div>
                     <span class="icon">📚</span>
                 </a>
-                <button type="button" class="info-btn" onclick="toggleInfo(event, this)">i</button>
                 <div class="info-box">
                     أداة مساعدة للباحثين لتنظيم المراجع والمصادر وترتيب التوثيق البحثي وفق الأصول الأكاديمية.
                 </div>
@@ -248,10 +267,12 @@
             <!-- منسق الشعر العربي -->
             <div class="app-item">
                 <a href="https://poetrygrid.streamlit.app/" target="_blank" class="app-card">
-                    <span>منسق الشعر العربي</span>
+                    <div class="card-content">
+                        <span class="info-btn" role="button" title="تعريف بالتطبيق" onclick="toggleInfo(event, this)">i</span>
+                        <span>منسق الشعر العربي</span>
+                    </div>
                     <span class="icon">📜</span>
                 </a>
-                <button type="button" class="info-btn" onclick="toggleInfo(event, this)">i</button>
                 <div class="info-box">
                     أداة مخصصة لتنسيق الأبيات الشعرية وضبط شطري البيت (الصدر والعجز) بصورة فنية ومنتظمة.
                 </div>
@@ -265,7 +286,10 @@
 
     <script>
         function toggleInfo(event, button) {
+            // منع الانتقال للرابط عند الضغط على أيقونة التعريف
+            event.preventDefault();
             event.stopPropagation();
+
             const parentItem = button.closest('.app-item');
             const infoBox = parentItem.querySelector('.info-box');
             const isCurrentlyShown = infoBox.classList.contains('show');
