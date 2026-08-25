@@ -158,22 +158,21 @@
             animation: fadeIn 0.2s ease-in-out;
         }
 
-        /* زر الملاحظات الرئيسي */
+        /* زر الملاحظات الرئيسي (تم تصغيره وتنسيقه ليصبح أنيقاً) */
         .feedback-trigger-btn {
-            margin-top: 24px;
-            width: 100%;
-            padding: 12px 18px;
+            margin: 20px auto 0 auto;
+            padding: 8px 16px;
             background-color: #f1f5f9;
-            color: #334155;
+            color: #475569;
             border: 1px dashed #cbd5e1;
-            border-radius: 12px;
-            font-size: 0.95rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             transition: all 0.2s ease;
         }
 
@@ -204,7 +203,7 @@
             animation: fadeIn 0.2s ease-in-out;
         }
 
-        /* محتوى النافذة المنبثقة */
+        /* محتوى النافذة المنبثقة (تمت إعادتها إلى أبعادها الأصلية المثالية) */
         .modal-content {
             background-color: #ffffff;
             padding: 24px;
@@ -260,6 +259,7 @@
             border-color: #0369a1;
         }
 
+        /* إرجاع ارتفاع مربع الكتابة لوضعه الأصلي */
         .feedback-form textarea {
             resize: vertical;
             min-height: 90px;
@@ -401,18 +401,20 @@
             </div>
         </div>
 
-        <!-- زر فتح نافذة الملاحظات -->
-        <button class="feedback-trigger-btn" onclick="openFeedbackModal()">
-            <span>💬</span>
-            <span>إرسال ملاحظات أو استفسار</span>
-        </button>
+        <!-- زر إرسال الملاحظات المصغر والأنيق -->
+        <div>
+            <button class="feedback-trigger-btn" onclick="openFeedbackModal()">
+                <span>💬</span>
+                <span>إرسال ملاحظات أو استفسار</span>
+            </button>
+        </div>
 
         <footer>
             جميع الحقوق محفوظة د.عمر الرواجفة&copy; 2026
         </footer>
     </div>
 
-    <!-- النافذة المنبثقة لإرسال الملاحظات -->
+    <!-- النافذة المنبثقة بكامل أبعادها الأصلية الممتازة -->
     <div class="modal-overlay" id="feedbackModal" onclick="closeModalOnOverlay(event)">
         <div class="modal-content">
             <button class="close-modal-btn" onclick="closeFeedbackModal()">&times;</button>
@@ -422,6 +424,7 @@
             </div>
             <form action="https://formspree.io/f/meajyqyj" method="POST" class="feedback-form" id="feedbackForm" onsubmit="submitFeedback(event)">
                 <input type="text" name="name" placeholder="الاسم (اختياري)">
+                <input type="text" name="contact" placeholder="البريد الإلكتروني أو رقم التواصل (اختياري)">
                 <textarea name="message" required placeholder="اكتب ملاحظتك أو اقتراحك هنا..."></textarea>
                 <button type="submit" class="feedback-btn" id="submitBtn">إرسال الملاحظة</button>
             </form>
@@ -429,7 +432,6 @@
     </div>
 
     <script>
-        // إظهار وإخفاء مربعات معلومات التطبيقات
         function toggleInfo(event, button) {
             event.preventDefault();
             event.stopPropagation();
@@ -453,7 +455,6 @@
             });
         });
 
-        // وظائف النافذة المنبثقة للملاحظات
         function openFeedbackModal() {
             document.getElementById('feedbackModal').classList.add('active');
         }
@@ -468,7 +469,6 @@
             }
         }
 
-        // إرسال الملاحظة دون إعادة تحميل الصفحة وإغلاق النافذة آلياً
         function submitFeedback(event) {
             event.preventDefault();
             const form = event.target;
