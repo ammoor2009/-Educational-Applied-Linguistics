@@ -57,6 +57,7 @@
         .app-item {
             position: relative;
             width: 100%;
+            z-index: 1; /* مستوى طبقة افتراضي */
         }
 
         /* البطاقة المدمجة بالكامل */
@@ -123,10 +124,13 @@
             font-size: 1.3rem;
         }
 
-        /* مربع الوصف النصي الانسيابي */
+        /* مربع الوصف النصي - يطفو فوق العناصر دون إزاحة */
         .info-box {
             display: none;
-            margin-top: 8px;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            left: 0;
             background-color: #1e293b;
             color: #f8fafc;
             padding: 12px 16px;
@@ -134,7 +138,20 @@
             font-size: 0.88rem;
             line-height: 1.5;
             text-align: right;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            z-index: 99;
+        }
+
+        .info-box::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            right: 22px;
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 6px solid #1e293b;
         }
 
         .info-box.show {
@@ -176,7 +193,7 @@
             height: 100%;
             background-color: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(4px);
-            z-index: 100;
+            z-index: 1000;
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -446,18 +463,27 @@
             const infoBox = parentItem.querySelector('.info-box');
             const isCurrentlyShown = infoBox.classList.contains('show');
 
+            // إخفاء جميع المربعات وإعادة ضبط مستوى الطبقات (z-index)
             document.querySelectorAll('.info-box').forEach(box => {
                 box.classList.remove('show');
             });
+            document.querySelectorAll('.app-item').forEach(item => {
+                item.style.zIndex = '1';
+            });
 
+            // إظهار المربع الحالي ورفع الطبقة الخاصة بالبطاقة لتطفو فوق البطاقات السفلى
             if (!isCurrentlyShown) {
                 infoBox.classList.add('show');
+                parentItem.style.zIndex = '100';
             }
         }
 
         document.addEventListener('click', function() {
             document.querySelectorAll('.info-box').forEach(box => {
                 box.classList.remove('show');
+            });
+            document.querySelectorAll('.app-item').forEach(item => {
+                item.style.zIndex = '1';
             });
         });
 
