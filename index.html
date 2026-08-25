@@ -296,10 +296,17 @@
 <body>
 
     <div class="container">
-        <h1>
-            منصة التطبيقات الذكية
-            <span class="info-btn" style="vertical-align: middle; width: 24px; height: 24px; font-size: 0.85rem; display: inline-flex;" title="منصة تعليمية تفاعلية تهدف لنقل الطالب من الأطر النظرية إلى الممارسة التطبيقية">i</span>
-        </h1>
+        <!-- العنوان الرئيسي مع زر معلومات تفاعلي وقابل للنقر -->
+        <div class="app-item" style="margin-bottom: 8px;">
+            <h1>
+                منصة التطبيقات الذكية
+                <span class="info-btn" style="vertical-align: middle; width: 24px; height: 24px; font-size: 0.85rem; display: inline-flex;" role="button" onclick="toggleInfo(event, this)">i</span>
+            </h1>
+            <div class="info-box" style="text-align: center;">
+                منصة تعليمية تفاعلية تهدف لنقل الطالب من الأطر النظرية إلى الممارسة التطبيقية.
+            </div>
+        </div>
+
         <p class="subtitle">الهدف منها وضع الطالب في الجانب التطبيقي وإخراجه عن الأطر النظرية</p>
         <p class="subtitle">اختر التطبيق المراد الانتقال إليه وتجربته</p>
 
@@ -316,6 +323,7 @@
                 <div class="info-box">تطبيق تفاعلي متقدم يُعنى بضبط الأبيات وتحليلها عروضياً بدقة متناهية، لتقديم تحليل عروضي وتأصيل لغوي متكامل.
                 </div>
             </div>
+
             <!-- تطبيق سَرْد -->
             <div class="app-item">
                 <a href="https://sard-app.streamlit.app/" target="_blank" class="app-card">
