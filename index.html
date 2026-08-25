@@ -158,7 +158,7 @@
             animation: fadeIn 0.2s ease-in-out;
         }
 
-        /* زر الملاحظات الرئيسي (تم تصغيره وتنسيقه ليصبح أنيقاً) */
+        /* زر الملاحظات الرئيسي */
         .feedback-trigger-btn {
             margin: 20px auto 0 auto;
             padding: 8px 16px;
@@ -203,7 +203,7 @@
             animation: fadeIn 0.2s ease-in-out;
         }
 
-        /* محتوى النافذة المنبثقة (تمت إعادتها إلى أبعادها الأصلية المثالية) */
+        /* محتوى النافذة المنبثقة */
         .modal-content {
             background-color: #ffffff;
             padding: 24px;
@@ -259,7 +259,6 @@
             border-color: #0369a1;
         }
 
-        /* إرجاع ارتفاع مربع الكتابة لوضعه الأصلي */
         .feedback-form textarea {
             resize: vertical;
             min-height: 90px;
@@ -297,12 +296,15 @@
 <body>
 
     <div class="container">
-        <h1>منصة التطبيقات الذكية</h1>
+        <h1>
+            منصة التطبيقات الذكية
+            <span class="info-btn" style="vertical-align: middle; width: 24px; height: 24px; font-size: 0.85rem; display: inline-flex;" title="منصة تعليمية تفاعلية تهدف لنقل الطالب من الأطر النظرية إلى الممارسة التطبيقية">i</span>
+        </h1>
         <p class="subtitle">الهدف منها وضع الطالب في الجانب التطبيقي وإخراجه عن الأطر النظرية</p>
         <p class="subtitle">اختر التطبيق المراد الانتقال إليه وتجربته</p>
 
         <div class="links-grid">
-           <!-- تطبيق سَرْد -->
+           <!-- تطبيق عروض -->
             <div class="app-item">
                 <a href="https://arood-app.streamlit.app/" target="_blank" class="app-card">
                     <div class="card-content">
@@ -426,7 +428,7 @@
         </footer>
     </div>
 
-    <!-- النافذة المنبثقة بكامل أبعادها الأصلية الممتازة -->
+    <!-- النافذة المنبثقة -->
     <div class="modal-overlay" id="feedbackModal" onclick="closeModalOnOverlay(event)">
         <div class="modal-content">
             <button class="close-modal-btn" onclick="closeFeedbackModal()">&times;</button>
