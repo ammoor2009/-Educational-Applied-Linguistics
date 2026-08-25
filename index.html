@@ -165,6 +165,67 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* قسم الملاحظات والتواصل */
+        .feedback-card {
+            margin-top: 24px;
+            padding: 20px 18px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            text-align: right;
+        }
+
+        .feedback-title {
+            color: #1e293b;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .feedback-form input,
+        .feedback-form textarea {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .feedback-form input:focus,
+        .feedback-form textarea:focus {
+            border-color: #0369a1;
+        }
+
+        .feedback-form textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .feedback-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #1e293b;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .feedback-btn:hover {
+            background-color: #ff4b4b;
+        }
+
         footer {
             margin-top: 30px;
             font-size: 0.85rem;
@@ -277,6 +338,19 @@
                     أداة مخصصة لتنسيق الأبيات الشعرية وضبط شطري البيت (الصدر والعجز) بصورة فنية ومنتظمة.
                 </div>
             </div>
+        </div>
+
+        <!-- قسم إرسال الملاحظات والآراء -->
+        <div class="feedback-card">
+            <div class="feedback-title">
+                <span>💬</span>
+                <span>إرسال ملاحظات أو استفسار</span>
+            </div>
+            <form action="https://formspree.io/f/meajyqyj" method="POST" class="feedback-form">
+                <input type="text" name="name" placeholder="الاسم (اختياري)">
+                <textarea name="message" required placeholder="اكتب ملاحظتك أو اقتراحك هنا..."></textarea>
+                <button type="submit" class="feedback-btn">إرسال الملاحظة</button>
+            </form>
         </div>
 
         <footer>
